@@ -6,7 +6,6 @@ const fs = require("fs");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { VueLoaderPlugin } = require("vue-loader");
 
 // Main const. Feel free to change it
 const PATHS = {
@@ -31,22 +30,11 @@ module.exports = {
     // module: `${PATHS.src}/your-module.js`,
   },
   output: {
-    filename: `${PATHS.assets}js/[name].[contenthash].js`,
+    filename: `${PATHS.assets}js/[name].js`,
     path: PATHS.dist,
     publicPath: "/"
   },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          name: "vendors",
-          test: /node_modules/,
-          chunks: "all",
-          enforce: true
-        }
-      }
-    }
-  },
+
   module: {
     rules: [
       {
@@ -55,16 +43,7 @@ module.exports = {
         loader: "babel-loader",
         exclude: "/node_modules/"
       },
-      {
-        // Vue
-        test: /\.vue$/,
-        loader: "vue-loader",
-        options: {
-          loader: {
-            scss: "vue-style-loader!css-loader!sass-loader"
-          }
-        }
-      },
+
       {
         // Fonts
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
@@ -82,25 +61,21 @@ module.exports = {
         }
       },
       {
-        // scss
         test: /\.scss$/,
         use: [
-          "style-loader",
+          'style-loader',
           MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader",
-            options: { sourceMap: true }
-          },
-          {
-            loader: "postcss-loader",
+            loader: 'css-loader',
+            options: {sourceMap: true}
+          }, {
+            loader: 'postcss-loader',
             options: {
               sourceMap: true,
-              config: { path: `./postcss.config.js` }
-            }
-          },
-          {
-            loader: "sass-loader",
-            options: { sourceMap: true }
+              config: {path: `./postcss.config.js`}}
+          }, {
+            loader: 'sass-loader',
+            options: {sourceMap: true}
           }
         ]
       },
@@ -125,16 +100,11 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    alias: {
-      "~": PATHS.src,
-      vue$: "vue/dist/vue.js"
-    }
-  },
+
   plugins: [
-    new VueLoaderPlugin(),
+
     new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/[name].[contenthash].css`
+      filename: `${PATHS.assets}css/[name].css`
     }),
     new CopyWebpackPlugin([
       { from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img` },
@@ -155,6 +125,10 @@ module.exports = {
           template: `${PAGES_DIR}/${page}`,
           filename: `./${page}`
         })
-    )
+    ),
+    new HtmlWebpackPlugin({
+      template: `${PAGES_DIR}/index.html`,
+      filename: "index.html"
+    })
   ]
 };
