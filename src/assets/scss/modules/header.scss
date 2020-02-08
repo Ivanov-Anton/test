@@ -1,5 +1,8 @@
 header {
   color: #fff;
+  a {
+    color: inherit;
+  }
   background: #002462 url("/assets/img/bg.png") no-repeat;
   background-size: cover;
 
@@ -41,6 +44,76 @@ header {
     }
   }
 
+  .header_menu {
+    //border: 1px solid red;
+    position: relative;
+    height: 10vh;
+    margin-top: 30px;
+    img.logo {
+      position: absolute;
+      width: 18%;
+      bottom: 0;
+    }
+    ul.main_menu {
+      position: absolute;
+      font-size: 20px;
+      bottom: 3.5vh;
+      right: 0;
+      text-transform: lowercase;
+
+      list-style: none;
+      li {
+        margin-left: 18px;
+        color: #fff;
+        display: inline;
+      }
+
+    }
+
+
+  }
+  .header_main_caption {
+    text-align: center;
+    h1 {
+      margin: 15px 0px;
+    }
+    span {
+      color: #FED530;
+      font-weight: bold;
+    }
+    .header_level {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #FED530;
+    }
+    .info {
+      font-size: 14px;
+      margin-top: 20px;
+      text-align: center;
+      span {
+        margin-left: 8px;
+        vertical-align: middle;
+      }
+
+      .rating {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        .rating_value {
+          text-transform: lowercase;
+          font-size: 13px;
+          letter-spacing: 1px;
+          font-weight: 800;
+          position: absolute;
+          right: 7px;
+          top: 5px;
+          color: #1e3c6d;
+        }
+      }
+
+    }
+
+  }
 
 
 
