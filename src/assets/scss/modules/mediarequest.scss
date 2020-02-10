@@ -4,3 +4,33 @@
     margin: 0 auto;
   }
 }
+
+
+@media (min-width: 350px) {
+  .conches_wrap {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .container_body {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .conches {
+    margin-top: 180px;
+  }
+  .technology {
+    margin-bottom: 280px;
+  }
+  .main_content h2 {
+    font-size: 4vh;
+  }
+}
+@media (max-width: 320px) {
+  .container_body {
+    width: 90%;
+  }
+  .technology {
+    margin-bottom: 280px;
+  }
+  
+}
