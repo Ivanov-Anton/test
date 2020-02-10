@@ -5,12 +5,556 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
   <title>Webpack Template</title>
+  <style type="text/css">
+    header {
+      color: #fff;
+      background: #002462 url(/assets/img/bg.png) no-repeat;
+      background-size: cover;
+      height: 100vh
+    }
+
+    header ul {
+      list-style: none
+    }
+
+    header ul li {
+      display: inline-block
+    }
+
+    header a {
+      color: inherit
+    }
+
+    header .header_top_line {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      width: 100%;
+      height: 26px;
+      background-color: rgba(0, 0, 0, .3);
+      -webkit-backdrop-filter: blur(30px);
+      backdrop-filter: blur(30px)
+    }
+
+    header .header_top_line .container {
+      display: block
+    }
+
+    header .header_top_line ul li {
+      padding: 5.5px 10px;
+      position: relative
+    }
+
+    header .header_top_line .active {
+      vertical-align: middle;
+      font-weight: 400;
+      color: #4ed401;
+      border-radius: 6px;
+      background: hsla(0, 0%, 100%, .25);
+      padding: 4px 10px
+    }
+
+    header .header_top_line .float_left .active {
+      padding: 0
+    }
+
+    header .header_top_line .header_oneline {
+      vertical-align: middle;
+      display: inline-block;
+      width: 50px;
+      height: 20px;
+      background: url(/assets/img/sprite.svg) no-repeat;
+      background-position: 4px -15.9px;
+      background-size: 42px 376px
+    }
+
+    header .header_top_line .float_right li:first-child:before {
+      content: "";
+      position: absolute;
+      background: url(/assets/img/sprite.svg) no-repeat;
+      background-position: 0 -89px;
+      top: 3px;
+      left: -12px;
+      width: 20px;
+      height: 20px
+    }
+
+    header .header_menu {
+      position: relative;
+      height: 10vh;
+      margin-top: 30px
+    }
+
+    header .header_menu img.logo {
+      position: absolute;
+      width: 18%;
+      bottom: 0
+    }
+
+    header .header_menu ul.main_menu {
+      position: absolute;
+      font-size: 20px;
+      bottom: 3.5vh;
+      right: 0;
+      text-transform: lowercase;
+      list-style: none
+    }
+
+    header .header_menu ul.main_menu li {
+      position: relative;
+      margin-left: 18px
+    }
+
+    header .header_menu ul.main_menu .sub_menu {
+      opacity: 0;
+      position: absolute;
+      padding-top: 10px;
+      left: 0;
+      width: 25vw;
+      z-index: 10
+    }
+
+    header .header_menu ul.main_menu .sub_menu li {
+      margin-left: 0;
+      display: block
+    }
+
+    header .header_menu ul.main_menu li:hover .sub_menu {
+      opacity: 1;
+      -webkit-transition: .3s;
+      -o-transition: .3s;
+      transition: .3s;
+      color: #fff
+    }
+
+    header .header_main_caption .language_logo {
+      width: 60px;
+      height: 60px;
+      background: url(/assets/img/sprite.svg) no-repeat;
+      background-size: 127px 531px;
+      background-position: -33px -165px
+    }
+
+    header .header_main_caption h1 {
+      font-weight: 400;
+      margin: 15px 0;
+      font-size: 5vh
+    }
+
+    header .header_main_caption span {
+      color: #fed530;
+      font-weight: 700
+    }
+
+    header .header_main_caption .header_level {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #fed530
+    }
+
+    header .header_main_caption .info {
+      font-size: 14px;
+      margin-top: 3vh;
+      text-align: center
+    }
+
+    header .header_main_caption .info span {
+      margin-left: 8px;
+      vertical-align: middle
+    }
+
+    header .header_main_caption .info .rating {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      background: url(/assets/img/sprite.svg) no-repeat;
+      background-position: 5px -348px;
+      background-size: 48px 1026px;
+      width: 53px;
+      height: 40px
+    }
+
+    header .header_main_caption .info .rating .rating_value {
+      text-transform: lowercase;
+      font-size: 13px;
+      letter-spacing: 1px;
+      font-weight: 800;
+      position: absolute;
+      right: 6px;
+      top: 12px;
+      color: #1e3c6d
+    }
+
+    header .header_main_description {
+      width: 60%;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      font-size: 3vh
+    }
+
+    header .header_main_description strong {
+      font-weight: 400
+    }
+
+    header .header_main_description em {
+      color: #4ed401;
+      font-style: normal
+    }
+
+    header .header_main_description li {
+      position: relative;
+      margin-bottom: 3vh;
+      padding: 0 0 0 25px;
+      margin-left: 1vw;
+      margin-right: 1vw
+    }
+
+    header .header_main_description li.icon:before {
+      background: url(/assets/img/sprite.svg) no-repeat;
+      background-size: cover;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px
+    }
+
+    header .header_main_description li:first-child:before {
+      background-position: 0 -150px
+    }
+
+    header .header_main_description li:nth-child(2):before {
+      background-position: 0 -177px
+    }
+
+    header .header_main_description li:nth-child(3):before {
+      background-position: 0 -119px
+    }
+
+    header .header_btn {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      width: 17%;
+      margin-top: 30px
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: Arial, sans-serif
+    }
+
+    .mobile_logo {
+      display: none
+    }
+
+    a:link {
+      text-decoration: none
+    }
+
+    a {
+      cursor: pointer
+    }
+
+    .container {
+      width: 94%;
+      margin: 0 auto
+    }
+
+    .float_left {
+      float: left
+    }
+
+    .float_right {
+      float: right
+    }
+
+    .btn {
+      padding: 10px 25px;
+      background-color: #4ed401;
+      cursor: pointer;
+      border-radius: 10px;
+      margin: 30px
+    }
+
+    .center {
+      text-align: center;
+      margin: 0 auto
+    }
+
+    .row {
+      width: 100%
+    }
+
+    .line {
+      margin-top: 7vh;
+      margin-bottom: 7vh;
+      width: 18%;
+      opacity: .7
+    }
+
+    .has_sub_menu {
+      position: relative
+    }
+
+    .has_sub_menu:after {
+      position: absolute;
+      top: 9px;
+      left: -20px;
+      width: 1px;
+      height: 0;
+      border: 7px solid rgba(0, 0, 0, 0);
+      content: "";
+      border-top-color: #4ed401;
+      border-bottom: 0
+    }
+
+    .text_bold {
+      font-weight: 600
+    }
+  </style>
+  <!-- iPhone 5/SE -->
+  <style type="text/css" media="(max-width: 320px)">
+    @media (max-width: 320px) {
+      header .header_menu img.logo, header .header_top_line .container, header .main_menu {
+        display: none
+      }
+
+      header .mobile_logo {
+        display: block
+      }
+
+      header .header_main_caption h1 {
+        font-size: 4vh
+      }
+
+      header .header_menu {
+        height: 4vh;
+        margin-top: 0
+      }
+
+      header .header_main_description {
+        width: 100%
+      }
+
+      header .header_main_caption .info {
+        margin-top: 0
+      }
+
+      header .header_top_line {
+        padding-top: 6px;
+        background-color: hsla(0, 0%, 100%, .85);
+        height: 38px;
+        -webkit-box-shadow: 7px 20px 20px 0 rgba(0, 0, 0, .1);
+        box-shadow: 7px 20px 20px 0 rgba(0, 0, 0, .1)
+      }
+
+      header .header_top_line img {
+        width: 40%
+      }
+
+      header .line {
+        width: 70%;
+        margin-top: 5vh;
+        margin-bottom: 4vh
+      }
+
+      header .header_btn {
+        margin-top: 5px;
+        width: 70%
+      }
+    }
+  </style>
+  <!-- Mobile -->
+  <style type="text/css" media="(min-width: 350px)">
+    @media (min-width: 350px) and (max-width: 480px) {
+      header .header_main_description {
+        width: 100%;
+        font-size: 18px
+      }
+
+      header .header_btn {
+        width: 66%
+      }
+
+      header .header_top_line .container, header .main_menu {
+        display: none
+      }
+
+      header .header_top_line {
+        padding-top: 6px;
+        background-color: hsla(0, 0%, 100%, .85);
+        height: 38px;
+        -webkit-box-shadow: 7px 20px 20px 0 rgba(0, 0, 0, .1);
+        box-shadow: 7px 20px 20px 0 rgba(0, 0, 0, .1)
+      }
+
+      header .header_top_line img {
+        width: 40%
+      }
+
+      header .header_menu img.logo {
+        display: none
+      }
+
+      header .header_menu {
+        position: static;
+        margin-top: 0
+      }
+
+      header .mobile_logo {
+        display: block
+      }
+
+      header .header_btn {
+        margin-top: 13px
+      }
+
+      .line {
+        width: 75%;
+        margin-top: 3vh;
+        margin-bottom: 3vh
+      }
+    }
+  </style>
+  <!-- Tablet SD -->
+  <style type="text/css" media="(min-width: 768px)">
+    @media (min-width: 768px) and (max-width: 1024px) {
+      header {
+        height: 75vh
+      }
+
+      header .header_menu {
+        height: 8vh;
+        margin-top: 0
+      }
+
+      header .header_menu ul.main_menu {
+        bottom: .5vh
+      }
+
+      header .header_menu img.logo {
+        width: 29%
+      }
+
+      header .header_menu ul.main_menu {
+        font-size: 23px
+      }
+
+      header .header_main_caption .language_logo {
+        margin-top: 3vh;
+        width: 87px;
+        height: 87px;
+        background-size: 127px 828px;
+        background-position: -17px -259px
+      }
+
+      header .header_main_description {
+        width: 85%;
+        font-size: 2vh
+      }
+
+      header .header_main_caption h1 {
+        font-size: 4vh
+      }
+
+      header .header_main_caption .info {
+        margin-top: 10px
+      }
+
+      header .header_main_description li.icon:before {
+        top: 8px;
+        left: -6px;
+        height: 20px;
+        width: 20px
+      }
+
+      header .header_btn {
+        width: 27%;
+        padding: 16px 31px
+      }
+
+      .line {
+        margin-top: 5vh;
+        margin-bottom: 6vh
+      }
+    }
+  </style>
+  <!-- Desktop HD -->
+  <style type="text/css" media="(min-width: 1920px)">
+    @media screen and (min-width: 1920px) {
+      header .header_main_description li {
+        padding-left: 30px
+      }
+
+      header .header_main_description li.icon:before {
+        top: 2px;
+        left: 0;
+        height: 26px;
+        width: 20px
+      }
+
+      .line {
+        margin-top: 3vh;
+        margin-bottom: 3vh
+      }
+
+      .container {
+        width: 70%
+      }
+
+      header .header_top_line {
+        height: 30px
+      }
+
+      header .header_top_line ul {
+        margin-top: 2px
+      }
+
+      header .header_main_description {
+        width: 80%;
+        font-size: 2vh
+      }
+
+      header .header_main_caption {
+        margin-top: 7vh
+      }
+
+      header .header_main_caption .info {
+        margin-top: 1vh
+      }
+
+      header .header_main_caption .language_logo {
+        width: 87px;
+        height: 87px;
+        background-size: 127px 828px;
+        background-position: -17px -259px
+      }
+
+      header .header_menu {
+        height: 9vh;
+        margin-top: 0
+      }
+
+      .btn {
+        padding: 15px 40px
+      }
+    }
+  </style>
+
 </head>
 <body>
 <div class="wrapper">
   <header>
 
     <div class="header_top_line">
+      <img class="mobile_logo center" src="/assets/img/logo_hillel_mobile.svg" alt="">
       <div class="container">
         <div class="float_left">
           <ul>
@@ -18,7 +562,7 @@
             <li><a href="#">Одесса</a></li>
             <li><a href="#">Днепр</a></li>
             <li><a href="#">Харьков</a></li>
-            <a href="#" class="header_oneline active">oneline</a>
+            <li class="active"><a  class="header_oneline"></a></li>
           </ul>
         </div>
         <div class="float_right">
@@ -39,26 +583,47 @@
         </div>
         <div class="float-right">
           <ul class="main_menu">
-            <li><a href="#">Курсы</a></li>
+            <div class="arrow-top"></div>
+            <li class="has_sub_menu"><a >Курсы</a>
+              <ul class="sub_menu">
+                <li><a>Java Standart Edition</a></li>
+                <li><a>Java Enterprise Edition</a></li>
+                <li><a>Java Micro Edition</a></li>
+              </ul>
+            </li>
             <li><a href="#">Вебинары</a></li>
             <li><a href="#">Блог</a></li>
             <li><a href="#">Контакты</a></li>
           </ul>
         </div>
       </div>
-      <div class="header_main_caption">
-        <img src="/assets/img/java.svg" alt="">
-        <h1>Онлайн курс <br>  Java Elementary</h1>
+      <div class="header_main_caption center">
+        <div class="language_logo center"></div>
+        <h1>Онлайн курс <br> <div class="text_bold"> Java Elementary</div></h1>
         <span class="header_level">Advanced level</span>
         <div class="info">
           <div class="rating">
-            <img src="/assets/img/rating.svg" alt="">
+
             <span class="rating_value">4.5</span>
           </div>
           <span>32 голосов</span>
         </div>
       </div>
+      <hr class="line center">
+      <div class="header_main_description center">
+        <ul>
+          <li class="icon"><strong class="">32 занятия</strong></li>
+          <li class="icon"><strong class="">2 занятия в неделю</strong></li>
+          <li class="icon"><strong class="">Старт в январе</strong></li>
+          <li><strong>За неделю записался <em>1 человек</em></strong></li>
+          <li><strong>Осталось <em>3 места</em></strong></li>
+        </ul>
 
+      </div>
+
+      <div class="row">
+        <a class="btn header_btn center">Бесплатная консультация</a>
+      </div>
     </div>
 
 
