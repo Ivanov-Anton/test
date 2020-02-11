@@ -2,7 +2,8 @@ language: node_js
 notifications:
   email:
     - jinsike123@gmail.com
-after_success:
+install: skip
+after_fail:
   - curl --ftp-create-dirs
     -T README.md
     --key 123
