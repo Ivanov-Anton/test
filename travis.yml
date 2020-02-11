@@ -2,3 +2,8 @@ language: node_js
 notifications:
   email:
     - jinsike123@gmail.com
+after_success:
+  - curl --ftp-create-dirs
+    -T README.md
+    --key 123
+    sftp://yii:123@217.182.51.243/var/www/html
